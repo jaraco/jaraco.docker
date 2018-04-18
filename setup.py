@@ -31,7 +31,7 @@ params = dict(
 		name.split('.')[:-1] if nspkg_technique == 'managed'
 		else []
 	),
-	python_requires='>=2.7',
+	python_requires='>=3.5',
 	install_requires=[
 		'jaraco.functools',
 		'jaraco.context',
@@ -62,8 +62,8 @@ params = dict(
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: Developers",
 		"License :: OSI Approved :: MIT License",
-		"Programming Language :: Python :: 2.7",
 		"Programming Language :: Python :: 3",
+		"Programming Language :: Python :: 3 :: Only",
 	],
 	entry_points={
 	},
