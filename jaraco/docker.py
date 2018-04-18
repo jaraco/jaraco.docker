@@ -15,8 +15,8 @@ def is_docker():
 	"""
 	Is this current environment running in docker?
 
-	>>> is_docker()
-	False
+	>>> type(is_docker())
+	<class 'bool'>
 	"""
 	return (
 		os.path.exists('/.dockerenv')
