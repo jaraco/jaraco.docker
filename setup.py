@@ -9,9 +9,9 @@ import setuptools
 with io.open('README.rst', encoding='utf-8') as readme:
 	long_description = readme.read()
 
-name = 'skeleton'
-description = ''
-nspkg_technique = 'native'
+name = 'jaraco.docker'
+description = 'Docker facilities'
+nspkg_technique = 'managed'
 """
 Does this package use "native" namespace packages or
 pkg_resources "managed" namespace packages?
@@ -33,6 +33,8 @@ params = dict(
 	),
 	python_requires='>=2.7',
 	install_requires=[
+		'jaraco.functools',
+		'jaraco.context',
 	],
 	extras_require={
 		'testing': [
