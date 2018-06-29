@@ -16,7 +16,7 @@
 Usage
 =====
 
-To determine if the current environment is running in docker:
+To determine if the current environment is running in docker::
 
 	from jaraco.docker import is_docker
 	is_docker()
