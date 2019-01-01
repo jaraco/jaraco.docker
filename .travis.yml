@@ -1,10 +1,10 @@
-dist: trusty
+dist: xenial
 sudo: false
 language: python
 
 python:
-- 3.5
-- &latest_py3 3.6
+- 3.6
+- &latest_py3 3.7
 
 jobs:
   fast_finish: true
@@ -12,18 +12,13 @@ jobs:
   - stage: deploy
     if: tag IS present
     python: *latest_py3
-    install: skip
-    script: skip
-    deploy:
-      provider: pypi
-      on:
-        tags: true
-        all_branches: true
-      user: jaraco
-      password:
-        secure: tSyL7EmPJsPVWiur4c9RZYCbIKUv2GeZcULwc31IR9hCa5SOc7ZFSk5FTXB5oeqfidajOrJj6rPU8sX3D/qdfu1T0I4EW98Bbk3vLAuGY+9YqkySdKRoCLFNSGnEU8uL+I3sBgCAYVirplBGfCXW/0S9n28KnO1HuCrRFGmRmStu834TqRXza0fI/dak00pJ/UxbeB/YMJGfX6AHOoAme3o7yfQl18UvQg3M8m1JJinmczGh9HeyA0FViVZcebAam5nkNOnzfWPwvwVGPFpQgHsfrhscWu3Sb5KEJX2yjAgKrfVnS3YjihNFolZ0jRcbeUiohfOJebLNqZunYXVTLwOxVLcviL610NhD3DR7vkqgiXI1dYr3AFQhI+/j640CNW0Y7LgJnFXeAmS7vI6j8hAvrIDu1qFO1MqsZp8hi5kgJrzEkvQ+uMd3OtlSJN4Z8JMGcoOLHQoUMjIbEE/rktPBVQMepSlQuZW8GxvgB8zyXuefi6ee8YaPKMIF/2hN+p0GZXWn1c9pHxLUEU0w9DTBv3ioejnWzYjn+87a3IRe1sAY37AKVycXnn424SJ31GEtigVTzTxXpQhV+kyR5TcbBsIE2BS/5LCeS9zX/ocjev/EGZD+Q1BSW16K5mIgMNPXiSVBtImF/c6BoyCJdfSTaTUWfW9UUpgyNxqgth4=
-      distributions: dists
-      skip_cleanup: true
+    before_script: skip
+    env:
+    - TWINE_USERNAME=jaraco
+    # TWINE_PASSWORD
+    - secure: gktc2KloEr8UcF6ErSgqp9SD1sjv3e/pHmV12r6XnQLOanW1YsHTxXKyeVqrLJINfqBD1GHbHUHxib+3UF75pKCfO3uzkurY0iLKG9gIYf+yneg6ELdGxpeV+lVt/alPTn+I5933fhzIIo+EghPq6YBqtHO6HO3EY11PeLmhVRZ1Z94Q0RKDH/45+LSh5xO3FMYVd3xCDuAkDbscw6zYjHWCkMkv50LgAotE7PDxKpXpOKlDP83JbLzHit0nsZnq5oBP7dg5JQI538CvZCRkBgn9g1F+aUjsaFSnCXN92ePmlxtfU7Wia0JcuFvlfqgCXIXlDCgRFLRZdAVgTCX9+u/UIbnrAq3vgo34A2f8JrJ8feTEM4Eh/CQ+ehY0T5w/sBhAiPz3gi+a0LTKK5WMrWMU/Qs7mb6VyTDoqJipY8hHRV9ikS47RLtTjVcIMVTGkz+g675gI2JCA9rvMDiAdx+VRXUjqwYfv9IuSqeQAojPlL3+X/FqVxX8+xbiSM+0m1y9J5m7xlg5puJQR6V0Z0/U2T819erQI5H/1vsDd9v1NrUkkLDHUs+6UscQrQTz4pUPYWtVClbfw7wmP0oapZ/PCHpEqZ52WCCoL8qjOk1fr2LVNRsii/em6FES9kJGqveHiAh6ZNBL9SUBfOhfJWRNadaHXy5WfmsVFIi5XKc=
+    - TOX_TESTENV_PASSENV="TWINE_USERNAME TWINE_PASSWORD"
+    script: tox -e release
 
 cache: pip
 
