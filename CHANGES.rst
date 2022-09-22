@@ -1,3 +1,10 @@
+v2.1.0
+======
+
+Packaging refresh.
+
+Minor tweaks to use more modern abstractions (``pathlib``, ``jaraco.functools.apply``).
+
 2.0
 ===
 
