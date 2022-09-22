@@ -1,5 +1,5 @@
 import functools
-import os
+import pathlib
 
 from jaraco.functools import compose
 from jaraco.context import suppress
@@ -8,7 +8,11 @@ from jaraco.context import suppress
 @functools.partial(compose, bool)
 @suppress(FileNotFoundError)
 def text_in_file(text, filename):
-    return any(text in line for line in open(filename))
+    return any(text in line for line in filename.open())
+
+
+dockerenv = pathlib.Path('/.dockerenv')
+cgroup = pathlib.Path('/proc/self/cgroup')
 
 
 def is_docker():
@@ -18,4 +22,4 @@ def is_docker():
     >>> type(is_docker())
     <class 'bool'>
     """
-    return os.path.exists('/.dockerenv') or text_in_file('docker', '/proc/self/cgroup')
+    return dockerenv.exists() or text_in_file('docker', cgroup)
