@@ -1,11 +1,10 @@
-import functools
 import pathlib
 
-from jaraco.functools import compose
+from jaraco.functools import apply
 from jaraco.context import suppress
 
 
-@functools.partial(compose, bool)
+@apply(bool)
 @suppress(FileNotFoundError)
 def text_in_file(text, filename):
     return any(text in line for line in filename.open())
