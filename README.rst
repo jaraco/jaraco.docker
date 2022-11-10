@@ -1,10 +1,7 @@
 .. image:: https://img.shields.io/pypi/v/jaraco.docker.svg
-   :target: `PyPI link`_
+   :target: https://pypi.org/project/jaraco.docker
 
 .. image:: https://img.shields.io/pypi/pyversions/jaraco.docker.svg
-   :target: `PyPI link`_
-
-.. _PyPI link: https://pypi.org/project/jaraco.docker
 
 .. image:: https://github.com/jaraco/jaraco.docker/workflows/tests/badge.svg
    :target: https://github.com/jaraco/jaraco.docker/actions?query=workflow%3A%22tests%22
