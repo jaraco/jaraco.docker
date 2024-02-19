@@ -6,7 +6,7 @@ from jaraco.context import suppress
 
 @apply(bool)
 @suppress(FileNotFoundError)
-def text_in_file(text, filename: pathlib.Path):
+def text_in_file(text: str, filename: pathlib.Path) -> bool:
     """
     >>> text_in_file('anything', pathlib.Path(__file__))
     True
@@ -23,7 +23,7 @@ dockerenv = pathlib.Path('/.dockerenv')
 cgroup = pathlib.Path('/proc/self/cgroup')
 
 
-def is_docker():
+def is_docker() -> bool:
     """
     Is this current environment running in docker?
 
