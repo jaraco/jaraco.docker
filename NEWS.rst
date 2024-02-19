@@ -1,3 +1,12 @@
+v2.1.1
+======
+
+Bugfixes
+--------
+
+- Fixed ResourceWarning when opening the file.
+
+
 v2.1.0
 ======
 
