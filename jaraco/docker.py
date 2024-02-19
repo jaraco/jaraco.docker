@@ -10,6 +10,8 @@ def text_in_file(text, filename: pathlib.Path):
     """
     >>> text_in_file('text in line', pathlib.Path(__file__))
     True
+    >>> text_in_file('bomb'*2, pathlib.Path(__file__))
+    False
     """
     with filename.open(encoding='utf-8') as lines:
         return any(text in line for line in lines)
