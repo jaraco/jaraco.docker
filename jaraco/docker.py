@@ -7,7 +7,7 @@ from jaraco.context import suppress
 @apply(bool)
 @suppress(FileNotFoundError)
 def text_in_file(text, filename):
-    return any(text in line for line in filename.open())
+    return any(text in line for line in filename.open(encoding='utf-8'))
 
 
 dockerenv = pathlib.Path('/.dockerenv')
