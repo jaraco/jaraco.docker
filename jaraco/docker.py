@@ -6,7 +6,11 @@ from jaraco.context import suppress
 
 @apply(bool)
 @suppress(FileNotFoundError)
-def text_in_file(text, filename):
+def text_in_file(text, filename: pathlib.Path):
+    """
+    >>> text_in_file('text in line', pathlib.Path(__file__))
+    True
+    """
     return any(text in line for line in filename.open(encoding='utf-8'))
 
 
