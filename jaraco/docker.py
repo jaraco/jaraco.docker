@@ -12,6 +12,8 @@ def text_in_file(text, filename: pathlib.Path):
     True
     >>> text_in_file('bomb'*2, pathlib.Path(__file__))
     False
+    >>> text_in_file('anything', pathlib.Path('/doesnotexist'))
+    False
     """
     with filename.open(encoding='utf-8') as lines:
         return any(text in line for line in lines)
