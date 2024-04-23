@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import itertools
 import pathlib
 import re
@@ -8,7 +10,7 @@ from jaraco.context import suppress
 
 @apply(bool)
 @suppress(FileNotFoundError)
-def text_in_file(text: str, filename: pathlib.Path, limit=None) -> bool:
+def text_in_file(text: str, filename: pathlib.Path, limit: int | None = None) -> bool:
     """
     >>> text_in_file('anything', pathlib.Path(__file__))
     True
