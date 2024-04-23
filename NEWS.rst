@@ -1,3 +1,12 @@
+v2.2.1
+======
+
+Bugfixes
+--------
+
+- Add a type annotation for the limit parameter of text_in_file.
+
+
 v2.2.0
 ======
 

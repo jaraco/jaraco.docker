@@ -1,1 +1,0 @@
-Add a type annotation for the limit parameter of text_in_file.
