@@ -1,4 +1,6 @@
+import itertools
 import pathlib
+import re
 
 from jaraco.functools import apply
 from jaraco.context import suppress
@@ -6,7 +8,7 @@ from jaraco.context import suppress
 
 @apply(bool)
 @suppress(FileNotFoundError)
-def text_in_file(text: str, filename: pathlib.Path) -> bool:
+def text_in_file(text: str, filename: pathlib.Path, limit=None) -> bool:
     """
     >>> text_in_file('anything', pathlib.Path(__file__))
     True
@@ -16,11 +18,12 @@ def text_in_file(text: str, filename: pathlib.Path) -> bool:
     False
     """
     with filename.open(encoding='utf-8') as lines:
-        return any(text in line for line in lines)
+        return any(re.search(text, line) for line in itertools.islice(lines, limit))
 
 
 dockerenv = pathlib.Path('/.dockerenv')
 cgroup = pathlib.Path('/proc/self/cgroup')
+mountinfo = pathlib.Path('/proc/self/mountinfo')
 
 
 def is_docker() -> bool:
@@ -30,4 +33,8 @@ def is_docker() -> bool:
     >>> type(is_docker())
     <class 'bool'>
     """
-    return dockerenv.exists() or text_in_file('docker', cgroup)
+    return (
+        dockerenv.exists()
+        or text_in_file('docker', cgroup)
+        or text_in_file('docker|overlay', mountinfo, limit=1)
+    )
