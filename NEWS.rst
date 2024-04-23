@@ -1,3 +1,12 @@
+v2.2.0
+======
+
+Features
+--------
+
+- Docker detection also looks for 'docker' or 'overlay' in the mount info. (#3)
+
+
 v2.1.2
 ======
 

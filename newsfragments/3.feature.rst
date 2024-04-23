@@ -1,1 +1,0 @@
-Docker detection also looks for 'docker' or 'overlay' in the mount info.
