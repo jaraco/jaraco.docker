@@ -27,7 +27,7 @@ dynamic = ["version"]
 Homepage = "https://github.com/jaraco/jaraco.docker"
 
 [project.optional-dependencies]
-testing = [
+test = [
 	# upstream
 	"pytest >= 6",
 	"pytest-checkdocs >= 2.4",
@@ -39,7 +39,7 @@ testing = [
 	# local
 	"importlib_resources",
 ]
-docs = [
+doc = [
 	# upstream
 	"sphinx >= 3.5",
 	"jaraco.packaging >= 9.3",
