@@ -1,3 +1,12 @@
+v2.3.0
+======
+
+Features
+--------
+
+- Add script for evaluating docker/for-mac#7295. (#7295)
+
+
 v2.2.1
 ======
 
