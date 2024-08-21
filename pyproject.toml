@@ -29,16 +29,12 @@ Source = "https://github.com/jaraco/jaraco.docker"
 [project.optional-dependencies]
 test = [
 	# upstream
-	"pytest >= 6",
-	"pytest-checkdocs >= 2.4",
-	"pytest-cov",
-	"pytest-mypy",
-	"pytest-enabler >= 2.2",
-	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
+	"pytest >= 6, != 8.1.*",
 
 	# local
 	"importlib_resources",
 ]
+
 doc = [
 	# upstream
 	"sphinx >= 3.5",
@@ -49,5 +45,27 @@ doc = [
 
 	# local
 ]
+
+check = [
+	"pytest-checkdocs >= 2.4",
+	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
+]
+
+cover = [
+	"pytest-cov",
+]
+
+enabler = [
+	"pytest-enabler >= 2.2",
+]
+
+type = [
+	# upstream
+	"pytest-mypy",
+
+	# local
+]
+
+
 
 [tool.setuptools_scm]
