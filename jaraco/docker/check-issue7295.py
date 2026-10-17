@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 Script for evaluating docker/for-mac#7295.
 
@@ -8,7 +6,6 @@ Run with ``python -m jaraco.docker.check-issue7295``.
 
 import subprocess
 import sys
-
 
 codes = dict(
     SIGSEGV=139,
@@ -20,7 +17,7 @@ code_names = {v: k for k, v in codes.items()}
 
 def run_test():
     cmd = ['docker', 'run', '--platform', 'linux/amd64', 'jaraco/for-mac-issue-7295']
-    proc = subprocess.run(cmd, capture_output=True)
+    proc = subprocess.run(cmd, capture_output=True, check=False)
     return proc.returncode
 
 

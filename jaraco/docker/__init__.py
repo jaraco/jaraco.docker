@@ -4,8 +4,8 @@ import itertools
 import pathlib
 import re
 
-from jaraco.functools import apply
 from jaraco.context import suppress
+from jaraco.functools import apply
 
 
 @apply(bool)
